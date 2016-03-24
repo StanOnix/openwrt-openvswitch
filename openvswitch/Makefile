@@ -38,9 +38,13 @@ SUPPORTED_KERNELS:=LINUX_3_18||LINUX_4_1||LINUX_4_3||LINUX_4_4
 include $(INCLUDE_DIR)/package.mk
 $(call include_mk, python-package.mk)
 
+PKG_FIXUP=libtool
+PKG_FIXUP:=autoreconf
+PKG_FIXUP:=patch-libtool
+PKG_FIXUP:=gettext-version
+
 define Package/openvswitch/Default
   SECTION:=net
-  SUBMENU:=Open vSwitch
   CATEGORY:=Network
   URL:=http://openvswitch.org/
   MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
